@@ -24,6 +24,7 @@ import {
   ChevronDown,
 } from 'lucide-react';
 import { loginUser } from '@/lib/auth';
+import MittiLogo from '@/components/ui/MittiLogo';
 
 export default function LoginPage() {
   const router = useRouter();
@@ -179,30 +180,7 @@ export default function LoginPage() {
         <div className="relative z-10 flex items-center justify-between">
           <div className="flex items-center gap-3.5">
             {/* Logo Mark */}
-            <div
-              className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-xl"
-              style={{
-                background: 'linear-gradient(135deg, #1A4731 0%, #2D6A4F 60%, #52B788 100%)',
-                border: '1px solid rgba(255, 255, 255, 0.25)',
-                boxShadow: '0 4px 20px rgba(45, 106, 79, 0.45)',
-              }}
-            >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"
-                  fill="rgba(255,255,255,0.15)"
-                />
-                <path
-                  d="M12 5c0 0-2 3.5-2 6.5s2 6.5 2 6.5 2-3.5 2-6.5S12 5 12 5z"
-                  fill="#A3E635"
-                />
-                <path
-                  d="M6 12c0 0 3.5-2 6.5-2s6.5 2 6.5 2-3.5 2-6.5 2S6 12 6 12z"
-                  fill="#FFFFFF"
-                  opacity="0.85"
-                />
-              </svg>
-            </div>
+            <MittiLogo size={48} className="rounded-2xl shadow-xl" />
 
             <div>
               <div className="flex items-center gap-2">

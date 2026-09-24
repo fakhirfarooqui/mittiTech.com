@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { Search, Bell, ChevronDown, X, LogOut } from 'lucide-react';
 import { weatherData } from '@/data/mockData';
 import { logoutUser } from '@/lib/auth';
+import MittiLogo from '@/components/ui/MittiLogo';
 
 interface HeaderProps {
   title: string;
@@ -44,18 +45,23 @@ export default function Header({ title, subtitle }: HeaderProps) {
       }}
     >
       {/* Page Title */}
-      <div className="flex-1 min-w-0">
-        <h1
-          className="font-bold leading-tight truncate"
-          style={{ fontSize: 17, color: 'var(--text-primary)', letterSpacing: '-0.35px' }}
-        >
-          {title}
-        </h1>
-        {subtitle && (
-          <p style={{ fontSize: 11, color: 'var(--text-muted)', marginTop: 0 }}>
-            {subtitle}
-          </p>
-        )}
+      <div className="flex-1 min-w-0 flex items-center gap-3">
+        <div className="sm:hidden flex-shrink-0">
+          <MittiLogo size={28} />
+        </div>
+        <div className="min-w-0">
+          <h1
+            className="font-bold leading-tight truncate"
+            style={{ fontSize: 17, color: 'var(--text-primary)', letterSpacing: '-0.35px' }}
+          >
+            {title}
+          </h1>
+          {subtitle && (
+            <p style={{ fontSize: 11, color: 'var(--text-muted)', marginTop: 0 }}>
+              {subtitle}
+            </p>
+          )}
+        </div>
       </div>
 
       {/* Weather Pill */}

@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { logoutUser } from '@/lib/auth';
+import MittiLogo from '@/components/ui/MittiLogo';
 import {
   LayoutDashboard,
   Bot,
@@ -99,21 +100,7 @@ export default function Sidebar() {
         style={{ borderBottom: '1px solid rgba(255,255,255,0.06)' }}
       >
         {/* Logo mark */}
-        <div
-          className="relative flex-shrink-0 flex items-center justify-center rounded-xl"
-          style={{
-            width: 36,
-            height: 36,
-            background: 'linear-gradient(135deg, #2D6A4F 0%, #52B788 100%)',
-            boxShadow: '0 4px 12px rgba(82, 183, 136, 0.35)',
-          }}
-        >
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-            <path d="M9 2C5.13 2 2 5.13 2 9s3.13 7 7 7 7-3.13 7-7-3.13-7-7-7z" fill="rgba(255,255,255,0.15)"/>
-            <path d="M9 4.5c0 0-1.5 2.5-1.5 4.5S9 13.5 9 13.5s1.5-2.5 1.5-4.5S9 4.5 9 4.5z" fill="white" opacity="0.9"/>
-            <path d="M4.5 9c0 0 2.5-1.5 4.5-1.5S13.5 9 13.5 9s-2.5 1.5-4.5 1.5S4.5 9 4.5 9z" fill="white" opacity="0.6"/>
-          </svg>
-        </div>
+        <MittiLogo size={36} />
 
         {!collapsed && (
           <div className="overflow-hidden flex-1">
