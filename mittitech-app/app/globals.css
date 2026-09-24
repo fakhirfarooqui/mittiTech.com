@@ -118,8 +118,6 @@
    ───────────────────────────────────────── */
 *, *::before, *::after {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 html {
@@ -768,6 +766,12 @@ body {
   50%       { transform: translateY(-4px); }
 }
 
+@keyframes shake {
+  0%, 100%   { transform: translateX(0); }
+  20%, 60%   { transform: translateX(-4px); }
+  40%, 80%   { transform: translateX(4px); }
+}
+
 .animate-fade-in    { animation: fade-in 0.35s ease forwards; }
 .animate-slide-right { animation: slide-in-right 0.3s ease forwards; }
 .animate-slide-left  { animation: slide-in-left 0.3s ease forwards; }
@@ -775,6 +779,7 @@ body {
 .animate-float       { animation: float 3s ease-in-out infinite; }
 .animate-breathe     { animation: breathe 3s ease-in-out infinite; }
 .animate-pulse-dot   { animation: pulse-dot 2s ease-in-out infinite; }
+.animate-shake       { animation: shake 0.35s ease; }
 .animate-shimmer {
   background: linear-gradient(90deg,
     transparent 0%, rgba(45,106,79,0.07) 50%, transparent 100%);

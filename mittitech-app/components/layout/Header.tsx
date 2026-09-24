@@ -1,8 +1,10 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Search, Bell, ChevronDown, X } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import { Search, Bell, ChevronDown, X, LogOut } from 'lucide-react';
 import { weatherData } from '@/data/mockData';
+import { logoutUser } from '@/lib/auth';
 
 interface HeaderProps {
   title: string;
@@ -10,8 +12,14 @@ interface HeaderProps {
 }
 
 export default function Header({ title, subtitle }: HeaderProps) {
+  const router = useRouter();
   const [showNotifications, setShowNotifications] = useState(false);
   const [searchFocused, setSearchFocused] = useState(false);
+
+  const handleLogout = () => {
+    logoutUser();
+    router.replace('/login');
+  };
 
   const notifications = [
     { icon: '💧', title: 'Low Soil Moisture', desc: 'Field B — Green Valley Farm', time: '2h ago', priority: 'warning' },
@@ -240,6 +248,16 @@ export default function Header({ title, subtitle }: HeaderProps) {
         <span style={{ fontSize: 9 }}>✦</span>
         DEMO
       </div>
+
+      {/* Logout Button */}
+      <button
+        onClick={handleLogout}
+        className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold text-rose-700 bg-rose-50 hover:bg-rose-100 border border-rose-200/80 transition-all duration-200 shadow-xs hover:scale-[1.02] active:scale-[0.98]"
+        title="Sign Out of Mitti Tech"
+      >
+        <LogOut size={13} />
+        <span>Logout</span>
+      </button>
     </header>
   );
 }

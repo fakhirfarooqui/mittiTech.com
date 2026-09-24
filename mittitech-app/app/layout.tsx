@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import Sidebar from '@/components/layout/Sidebar';
+import AuthGuard from '@/components/auth/AuthGuard';
 
 export const metadata: Metadata = {
   title: 'The Mitti Tech — Smart Soil & Agricultural Intelligence Platform',
@@ -35,22 +36,24 @@ export default function RootLayout({
           }}
         />
 
-        {/* Main App Shell */}
-        <div
-          className="flex h-screen overflow-hidden relative"
-          style={{ zIndex: 1 }}
-        >
-          {/* Sidebar */}
-          <Sidebar />
-
-          {/* Content Area */}
+        {/* Main App Shell protected by AuthGuard */}
+        <AuthGuard>
           <div
-            className="flex flex-col flex-1 overflow-hidden"
-            style={{ background: 'var(--bg-base)' }}
+            className="flex h-screen overflow-hidden relative"
+            style={{ zIndex: 1 }}
           >
-            {children}
+            {/* Sidebar */}
+            <Sidebar />
+
+            {/* Content Area */}
+            <div
+              className="flex flex-col flex-1 overflow-hidden"
+              style={{ background: 'var(--bg-base)' }}
+            >
+              {children}
+            </div>
           </div>
-        </div>
+        </AuthGuard>
       </body>
     </html>
   );

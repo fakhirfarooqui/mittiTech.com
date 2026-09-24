@@ -2,7 +2,8 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
+import { logoutUser } from '@/lib/auth';
 import {
   LayoutDashboard,
   Bot,
@@ -19,6 +20,7 @@ import {
   Wifi,
   Building2,
   ChevronDown,
+  LogOut,
 } from 'lucide-react';
 import clsx from 'clsx';
 
@@ -43,7 +45,17 @@ const groups = [
 
 export default function Sidebar() {
   const pathname = usePathname();
+  const router = useRouter();
   const [collapsed, setCollapsed] = useState(false);
+
+  if (pathname === '/login') {
+    return null;
+  }
+
+  const handleLogout = () => {
+    logoutUser();
+    router.replace('/login');
+  };
 
   return (
     <aside
@@ -292,6 +304,15 @@ export default function Sidebar() {
                 </span>
               </div>
             </div>
+          )}
+          {!collapsed && (
+            <button
+              onClick={handleLogout}
+              title="Sign Out / Switch Account"
+              className="p-1.5 rounded-lg text-rose-300/70 hover:text-rose-200 hover:bg-rose-950/50 transition-colors"
+            >
+              <LogOut size={13} />
+            </button>
           )}
         </div>
       </div>
